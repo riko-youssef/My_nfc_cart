@@ -8,9 +8,6 @@
     <link rel="icon" type="image/png" href="Youssefrr.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- إضافة مكتبة Lightbox لعرض الصور ملء الشاشة -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
-
     <style>
         * {
             margin: 0;
@@ -185,6 +182,7 @@
             border-radius: 12px;
             border: 1px solid #333;
             background: #1a1a1a;
+            cursor: pointer;
             transition: transform 0.2s ease;
         }
 
@@ -302,6 +300,84 @@
             color: #888;
             font-size: 12px;
         }
+
+        /* تنسيق عارض الصور ملء الشاشة الاحترافي الجديد */
+        #imageModal {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        #imageModal img {
+            max-width: 90%;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 8px;
+            transition: transform 0.2s ease;
+            cursor: grab;
+        }
+
+        #imageModal img:active {
+            cursor: grabbing;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: #fff;
+            font-size: 32px;
+            background: rgba(255, 255, 255, 0.2);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            border: none;
+            z-index: 100000;
+        }
+
+        .modal-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #fff;
+            font-size: 24px;
+            background: rgba(255, 255, 255, 0.2);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            border: none;
+            z-index: 100000;
+        }
+
+        .modal-prev { right: 15px; }
+        .modal-next { left: 15px; }
+
+        .modal-counter {
+            position: absolute;
+            bottom: 25px;
+            color: #d4af37;
+            font-size: 14px;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 6px 15px;
+            border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.4);
+        }
     </style>
 </head>
 <body>
@@ -343,26 +419,14 @@
 
         <div class="gallery-title"><i class="fa-solid fa-images"></i> معرض الصور</div>
         
-        <!-- معرض الصور مع تفعيل ميزة ملء الشاشة والأسهم والتنقل عبر السحب بالهاتف -->
+        <!-- معرض الصور المحدث -->
         <div class="gallery-grid">
-            <a href="Youssef3.png" data-lightbox="gallery" data-title="معرض الصور - 1">
-                <img src="Youssef3.png" alt="Gallery 1" class="gallery-img">
-            </a>
-            <a href="Youssef09.png" data-lightbox="gallery" data-title="معرض الصور - 2">
-                <img src="Youssef09.png" alt="Gallery 2" class="gallery-img">
-            </a>
-            <a href="Youssef00.png" data-lightbox="gallery" data-title="معرض الصور - 3">
-                <img src="Youssef00.png" alt="Gallery 3" class="gallery-img">
-            </a>
-            <a href="Youssef8.png" data-lightbox="gallery" data-title="معرض الصور - 4">
-                <img src="Youssef8.png" alt="Gallery 4" class="gallery-img">
-            </a>
-            <a href="Youssef7.png" data-lightbox="gallery" data-title="معرض الصور - 5">
-                <img src="Youssef7.png" alt="Gallery 5" class="gallery-img">
-            </a>
-            <a href="Youssefrr.png" data-lightbox="gallery" data-title="معرض الصور - 6">
-                <img src="Youssefrr.png" alt="Gallery 6" class="gallery-img">
-            </a>
+            <img src="Youssef3.png" alt="Gallery 1" class="gallery-img" onclick="openModal(0)">
+            <img src="Youssef09.png" alt="Gallery 2" class="gallery-img" onclick="openModal(1)">
+            <img src="Youssef00.png" alt="Gallery 3" class="gallery-img" onclick="openModal(2)">
+            <img src="Youssef8.png" alt="Gallery 4" class="gallery-img" onclick="openModal(3)">
+            <img src="Youssef7.png" alt="Gallery 5" class="gallery-img" onclick="openModal(4)">
+            <img src="Youssefrr.png" alt="Gallery 6" class="gallery-img" onclick="openModal(5)">
         </div>
 
         <div class="social-links">
@@ -383,6 +447,15 @@
         <button class="btn-save" onclick="downloadVCard()">
             <i class="fa-solid fa-user-plus"></i> حفظ جهة الاتصال
         </button>
+    </div>
+
+    <!-- نافذة عرض الصور ملء الشاشة -->
+    <div id="imageModal">
+        <button class="modal-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+        <button class="modal-arrow modal-prev" onclick="changeImage(1)"><i class="fa-solid fa-chevron-right"></i></button>
+        <img id="modalImg" src="" alt="Zoom Image">
+        <button class="modal-arrow modal-next" onclick="changeImage(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+        <div class="modal-counter" id="modalCounter">1 / 6</div>
     </div>
 
     <!-- 2. قسم الخدمات والتفاصيل في الأسفل -->
@@ -409,11 +482,79 @@
         <p>© 2026 جميع الحقوق محفوظة | يوسف الأمين - بطاقات NFC وشاشات QR الذكية</p>
     </footer>
 
-    <!-- ملفات الجافا سكريبت الخاصة بتشغيل مكتبة الصور ملء الشاشة -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
-
     <script>
+        const images = [
+            "Youssef3.png",
+            "Youssef09.png",
+            "Youssef00.png",
+            "Youssef8.png",
+            "Youssef7.png",
+            "Youssefrr.png"
+        ];
+        
+        let currentIndex = 0;
+        let scale = 1;
+        const modalImg = document.getElementById("modalImg");
+        const modal = document.getElementById("imageModal");
+        const counter = document.getElementById("modalCounter");
+
+        function openModal(index) {
+            currentIndex = index;
+            updateModalImage();
+            modal.style.display = "flex";
+            scale = 1;
+            modalImg.style.transform = `scale(${scale})`;
+        }
+
+        function closeModal() {
+            modal.style.display = "none";
+        }
+
+        function changeImage(direction) {
+            currentIndex += direction;
+            if (currentIndex >= images.length) {
+                currentIndex = 0;
+            } else if (currentIndex < 0) {
+                currentIndex = images.length - 1;
+            }
+            scale = 1;
+            modalImg.style.transform = `scale(${scale})`;
+            updateModalImage();
+        }
+
+        function updateModalImage() {
+            modalImg.src = images[currentIndex];
+            counter.innerText = `${currentIndex + 1} / ${images.length}`;
+        }
+
+        // إمكانية التكبير والتصغير بنقرستين أو بالماوس والزوم في الهاتف
+        modalImg.addEventListener("dblclick", () => {
+            scale = scale === 1 ? 2 : 1;
+            modalImg.style.transform = `scale(${scale})`;
+        });
+
+        // دعم السحب يميناً ويساراً بالهاتف (Swipe)
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        modal.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        modal.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) {
+                changeImage(1); // السحب لليسار يغير للصورة التالية
+            }
+            if (touchEndX > touchStartX + 50) {
+                changeImage(-1); // السحب لليمين يغير للصورة السابقة
+            }
+        }
+
         function downloadVCard() {
             const vcardData = `BEGIN:VCARD
 VERSION:3.0
