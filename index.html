@@ -1,27 +1,14 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- عنوان الموقع في محرك البحث -->
     <title>YOUSSEF__NFC</title>
-    
-    <!-- وصف الموقع في محرك البحث -->
     <meta name="description" content="خدمات يوسف الأمين لتزويد المحلات والشركات بأحدث بطاقات الأعمال الذكية بتقنية NFC وشاشات QR Code التفاعلية فـ المغرب. سهّل مشاركة بياناتك وتقييماتك بنقرة واحدة.">
-    
-    <!-- الكلمات المفتاحية المستهدفة لـ SEO -->
     <meta name="keywords" content="يوسف, بطاقة يوسف, يوسف NFC, بطاقات NFC, بطاقة الأعمال, بطاقة NFC الأعمال, يوسف المغرب, Youssef El Amine, NFC Morocco, بطاقة فيزيت ذكية, شاشات QR للمحلات, تقييمات جوجل للمحلات, NFC Smart Card, QR Code Display">
-    
-    <!-- وسم الحماية والأرشفة -->
     <meta name="robots" content="index, follow">
     <meta name="author" content="Youssef El Amine">
-    
-    <!-- الأيقونة -->
     <link rel="icon" type="image/png" href="Youssefrr.png">
-    
-    <!-- FontAwesome للأيقونات -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -42,17 +29,82 @@
             padding: 20px;
         }
 
-        /* ========== البطاقة الرقمية (الأعلى) ========== */
+        /* ========== البطاقة الرقمية الفاخرة (التعديل الجديد) ========== */
         .card-container {
+            position: relative;
             width: 100%;
             max-width: 420px;
-            background: linear-gradient(145deg, #1a1a1a, #111111);
-            border: 1px solid #d4af3733;
-            border-radius: 24px;
-            padding: 30px 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8), 0 0 15px rgba(212, 175, 55, 0.15);
-            text-align: center;
+            padding: 30px 22px;
+            border-radius: 28px;
+            overflow: hidden;
+
+            /* خلفية سوداء فاخرة برشة ذهبية وسقلي */
+            background:
+                radial-gradient(circle at 15% 15%, rgba(255,215,120,.20), transparent 22%),
+                radial-gradient(circle at 85% 20%, rgba(255,200,70,.15), transparent 25%),
+                radial-gradient(circle at 50% 85%, rgba(255,220,120,.12), transparent 30%),
+                linear-gradient(160deg,#1a1a1a 0%,#111111 35%,#090909 70%,#000000 100%);
+
+            /* الإطار الذهبي الفخم */
+            border: 2px solid rgba(255,215,90,.55);
+
+            /* الظلال والتوهج */
+            box-shadow:
+                0 0 8px rgba(255,215,0,.20),
+                0 0 18px rgba(255,200,0,.18),
+                0 15px 45px rgba(0,0,0,.80),
+                inset 0 1px 0 rgba(255,255,255,.05),
+                inset 0 0 25px rgba(255,215,0,.08);
+
+            backdrop-filter: blur(8px);
             margin-bottom: 30px;
+            text-align: center;
+        }
+
+        /* اللمعة الذهبية البرّاقة */
+        .card-container::before{
+            content:"";
+            position:absolute;
+            inset:0;
+            border-radius:28px;
+            pointer-events:none;
+            background:
+                radial-gradient(circle,
+                rgba(255,225,140,.70) 0%,
+                rgba(255,215,0,.18) 18%,
+                transparent 35%);
+            background-size:170px 170px;
+            opacity:.25;
+            mix-blend-mode:screen;
+        }
+
+        /* تأثير المعدن والسقلي */
+        .card-container::after{
+            content:"";
+            position:absolute;
+            inset:0;
+            border-radius:28px;
+            pointer-events:none;
+            background:
+                linear-gradient(
+                    125deg,
+                    transparent 0%,
+                    rgba(255,255,255,.04) 22%,
+                    transparent 42%,
+                    rgba(255,215,0,.10) 60%,
+                    transparent 80%
+                );
+            opacity:.7;
+        }
+
+        /* توهج الإطار عند اللمس أو مرور الماوس */
+        .card-container:hover{
+            transform:translateY(-4px);
+            box-shadow:
+                0 0 12px rgba(255,215,0,.35),
+                0 0 35px rgba(255,215,0,.25),
+                0 25px 60px rgba(0,0,0,.85);
+            transition:.45s ease;
         }
 
         /* الصورة الشخصية */
@@ -81,7 +133,6 @@
             font-weight: 500;
         }
 
-        /* وصف مهني وأنيق */
         .bio {
             font-size: 13px;
             color: #cccccc;
@@ -107,7 +158,6 @@
             margin-bottom: 25px;
         }
 
-        /* أزرار الاتصال والسريع */
         .action-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -139,7 +189,6 @@
             color: #ffffff;
         }
 
-        /* صندوق التفاصيل */
         .contact-info-box {
             background: #141414;
             border-radius: 14px;
@@ -169,7 +218,6 @@
             font-size: 16px;
         }
 
-        /* معرض الصور التعريفية (4 صور) */
         .gallery-title {
             font-size: 14px;
             color: #d4af37;
@@ -199,7 +247,6 @@
             border-color: #d4af37;
         }
 
-        /* أزرار التواصل الاجتماعي */
         .social-links {
             display: flex;
             justify-content: center;
@@ -228,7 +275,6 @@
             transform: translateY(-3px);
         }
 
-        /* زر حفظ جهة الاتصال */
         .btn-save {
             width: 100%;
             background: linear-gradient(135deg, #d4af37, #aa820a);
@@ -246,7 +292,6 @@
             box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
         }
 
-        /* ========== قسم SEO (الأسفل) ========== */
         .seo-content {
             width: 100%;
             max-width: 800px;
@@ -304,16 +349,12 @@
 </head>
 <body>
 
-    <!-- ========== البطاقة الرقمية (الأعلى) ========== -->
     <div class="card-container">
-        <!-- الصورة الشخصية المرفقة -->
         <img src="Logo_yossef.png" alt="Youssef El Amyn" class="profile-img">
 
-        <!-- الاسم والصفة -->
         <div class="name">YOUSSEF EL AMYN</div>
         <div class="title">Entrepreneur & Digital Creator</div>
 
-        <!-- الوصف المهني -->
         <div class="bio">
             مرحباً بكم في صفحتي الخاصة بالأعمال. نسعى دائماً لتقديم أفضل الخدمات والحلول الاحترافية، ونتمنى أن تكونوا دائماً راضين عن جودة عملنا وتواصلنا معكم.
         </div>
@@ -322,7 +363,6 @@
             <i class="fa-solid fa-wifi"></i> NFC Connected
         </div>
 
-        <!-- أزرار الاتصال السريع -->
         <div class="action-grid">
             <a href="tel:+212638571166" class="btn-action btn-call">
                 <i class="fa-solid fa-phone"></i> اتصال
@@ -332,7 +372,6 @@
             </a>
         </div>
 
-        <!-- تفاصيل الأرقام -->
         <div class="contact-info-box">
             <a href="tel:+212638571166" class="info-item">
                 <span>06 38 57 11 66</span>
@@ -343,7 +382,7 @@
                 <i class="fa-brands fa-whatsapp"></i>
             </a>
         </div>
-        <!-- معرض الصور 4 -->
+
         <div class="gallery-title"><i class="fa-solid fa-images"></i> معرض الصور</div>
         <div class="gallery-grid">
             <img src="file_00000000a49c820aa70e69fbf24bd21f.png" alt="Gallery Image 1" class="gallery-img">
@@ -353,10 +392,7 @@
             <img src="Youssef8.png" alt="Gallery Image 5" class="gallery-img">
             <img src="Youssef7.png" alt="Gallery Image 6" class="gallery-img">
         </div>
-        </div>
-        </div>
 
-        <!-- وسائل التواصل الاجتماعي مع Deep Link لإنستغرام -->
         <div class="social-links">
             <a href="instagram://user?username=youssef_amin778" class="social-btn" title="Instagram">
                 <i class="fa-brands fa-instagram"></i>
@@ -372,13 +408,11 @@
             </a>
         </div>
 
-        <!-- زر حفظ جهة الاتصال -->
         <button class="btn-save" onclick="downloadVCard()">
             <i class="fa-solid fa-user-plus"></i> حفظ جهة الاتصال
         </button>
     </div>
 
-    <!-- ========== قسم SEO (الأسفل - للبحث) ========== -->
     <div class="seo-content">
         <header>
             <h1>بطاقات الأعمال الذكية NFC وشاشات QR - يوسف الأمين</h1>
@@ -426,6 +460,5 @@ END:VCARD`;
             document.body.removeChild(a);
         }
     </script>
-
 </body>
 </html>
