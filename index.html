@@ -3,11 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YOUSSEF__NFC</title>
+    <title>YOUSSEF__NFC - بطاقات الأعمال الذكية وشاشات QR</title>
     <meta name="description" content="خدمات يوسف الأمين لتزويد المحلات والشركات بأحدث بطاقات الأعمال الذكية بتقنية NFC وشاشات QR Code التفاعلية فـ المغرب.">
     <link rel="icon" type="image/png" href="Youssefrr.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <!-- إضافة مكتبة Lightbox لعرض الصور ملء الشاشة -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+
     <style>
         * {
             margin: 0;
@@ -46,7 +49,7 @@
                 inset 0 1px 0 rgba(255,255,255,.05),
                 inset 0 0 25px rgba(255,215,0,.08);
             backdrop-filter: blur(8px);
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             text-align: center;
         }
 
@@ -182,9 +185,14 @@
             border-radius: 12px;
             border: 1px solid #333;
             background: #1a1a1a;
+            transition: transform 0.2s ease;
         }
 
-        /* ========== الأيقونات الفنية الملونة خصيصاً لكل منصة ========== */
+        .gallery-img:hover {
+            transform: scale(1.03);
+            border-color: #d4af37;
+        }
+
         .social-links {
             display: flex;
             justify-content: center;
@@ -204,21 +212,18 @@
             transition: transform 0.3s ease;
         }
 
-        /* إنستغرام: مفتوح ومنور (تدرج وردي وبرتقالي فخم) */
         .social-btn.instagram {
             background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888) !important;
             color: #ffffff !important;
             box-shadow: 0 4px 15px rgba(220, 39, 67, 0.5);
         }
 
-        /* فيسبوك: أزرق ملكي مفتوح */
         .social-btn.facebook {
             background: #1877f2 !important;
             color: #ffffff !important;
             box-shadow: 0 4px 15px rgba(24, 119, 242, 0.5);
         }
 
-        /* تيك توك: أسود مغموق وفخم مع إطار وخطوط نيون */
         .social-btn.tiktok {
             background: #000000 !important;
             color: #ff0050 !important;
@@ -226,7 +231,6 @@
             box-shadow: 0 0 12px rgba(255, 0, 80, 0.4);
         }
 
-        /* لينكد إن: أزرق رسمي مغموق وأنيق */
         .social-btn.linkedin {
             background: #0a66c2 !important;
             color: #ffffff !important;
@@ -253,10 +257,56 @@
             gap: 10px;
             box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
         }
+
+        main {
+            width: 100%;
+            max-width: 420px;
+            margin-bottom: 20px;
+            text-align: right;
+        }
+
+        main section {
+            background: #141414;
+            border: 1px solid #222;
+            padding: 18px;
+            border-radius: 16px;
+            margin-bottom: 15px;
+        }
+
+        main h2 {
+            font-size: 15px;
+            color: #d4af37;
+            margin-bottom: 10px;
+        }
+
+        main p, main li {
+            font-size: 13px;
+            color: #cccccc;
+            line-height: 1.6;
+        }
+
+        main ul {
+            padding-right: 20px;
+        }
+
+        main li {
+            margin-bottom: 6px;
+        }
+
+        footer {
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+            padding: 15px 0;
+            border-top: 1px solid #222;
+            color: #888;
+            font-size: 12px;
+        }
     </style>
 </head>
 <body>
 
+    <!-- 1. البطاقة الرقمية في الأعلى -->
     <div class="card-container">
         <img src="Logo_yossef.png" alt="Youssef El Amyn" class="profile-img">
 
@@ -264,7 +314,7 @@
         <div class="title">Entrepreneur & Digital Creator</div>
 
         <div class="bio">
-            مرحباً بكم في صفحتي الخاصة بالأعمال. نسعى دائماً لتقديم أفضل الخدمات والحلول الاحترافية.
+            مرحباً بكم في صفحتي الخاصة بالأعمال. نسعى دائماً لتقديم أفضل الخدمات والحلول الاحترافية، ونتمنى أن تكونوا دائماً راضين عن جودة عملنا وتواصلنا معكم.
         </div>
 
         <div class="badge-nfc">
@@ -292,16 +342,29 @@
         </div>
 
         <div class="gallery-title"><i class="fa-solid fa-images"></i> معرض الصور</div>
+        
+        <!-- معرض الصور مع تفعيل ميزة ملء الشاشة والأسهم والتنقل عبر السحب بالهاتف -->
         <div class="gallery-grid">
-            <img src="Youssef3.png" alt="Gallery 1" class="gallery-img">
-            <img src="Youssef09.png" alt="Gallery 2" class="gallery-img">
-            <img src="Youssef00.png" alt="Gallery 3" class="gallery-img">
-            <img src="Youssef8.png" alt="Gallery 4" class="gallery-img">
-            <img src="Youssef7.png" alt="Gallery 5" class="gallery-img">
-            <img src="images.png" alt="Gallery 6" class="gallery-img">
+            <a href="Youssef3.png" data-lightbox="gallery" data-title="معرض الصور - 1">
+                <img src="Youssef3.png" alt="Gallery 1" class="gallery-img">
+            </a>
+            <a href="Youssef09.png" data-lightbox="gallery" data-title="معرض الصور - 2">
+                <img src="Youssef09.png" alt="Gallery 2" class="gallery-img">
+            </a>
+            <a href="Youssef00.png" data-lightbox="gallery" data-title="معرض الصور - 3">
+                <img src="Youssef00.png" alt="Gallery 3" class="gallery-img">
+            </a>
+            <a href="Youssef8.png" data-lightbox="gallery" data-title="معرض الصور - 4">
+                <img src="Youssef8.png" alt="Gallery 4" class="gallery-img">
+            </a>
+            <a href="Youssef7.png" data-lightbox="gallery" data-title="معرض الصور - 5">
+                <img src="Youssef7.png" alt="Gallery 5" class="gallery-img">
+            </a>
+            <a href="Youssefrr.png" data-lightbox="gallery" data-title="معرض الصور - 6">
+                <img src="Youssefrr.png" alt="Gallery 6" class="gallery-img">
+            </a>
         </div>
 
-        <!-- أزرار التواصل الملونة والمخصصة -->
         <div class="social-links">
             <a href="instagram://user?username=youssef_amin778" class="social-btn instagram" title="Instagram">
                 <i class="fa-brands fa-instagram"></i>
@@ -321,6 +384,34 @@
             <i class="fa-solid fa-user-plus"></i> حفظ جهة الاتصال
         </button>
     </div>
+
+    <!-- 2. قسم الخدمات والتفاصيل في الأسفل -->
+    <main>
+        <section>
+            <h2>خدمات بطاقات NFC لأصحاب المحلات التجارية</h2>
+            <p>تهدف خدماتنا إلى تطوير مهارات تواصل الزبون مع صاحب المتجر بكل سهولة عبر زر حفظ جهة الاتصال وزيارة مواقع التواصل الاجتماعي.</p>
+            <p style="margin-top: 10px;">نوفر لكم مع بطاقات NFC خدمات متميزة؛ وعند تغيير أي معلومة يرجى الاستفسار لاستبدال المعلومة القديمة بالجديدة. نقدم أفضل حلول التكنولوجيا للمحلات والشركات، سواء كنت تبحث عن <strong>بطاقة NFC للأعمال</strong> أو <strong>شاشات QR Code</strong>.</p>
+            <p style="margin-top: 10px;">ومع نجاح المشروع، سنوفر ميزة مراجعات جوجل للتقييم وإرضاء الزبون ومتابعي وسائل التواصل الاجتماعي، فنحن نقدم لك الحل الأنسب بصنع بجودة عالية.</p>
+        </section>
+
+        <section>
+            <h2>مميزات بطاقات الأعمال الذكية</h2>
+            <ul>
+                <li>مشاركة رقم الهاتف، الموقع، والميديا بنقرة واحدة (NFC).</li>
+                <li>تسهيل جمع التقييمات على Google Reviews للمحلات التجارية.</li>
+                <li>تصميم فخم وشخصي يحمل اسمك وعلامتك التجارية.</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- 3. حقوق النشر والتطوير في أسفل الصفحة تماماً -->
+    <footer>
+        <p>© 2026 جميع الحقوق محفوظة | يوسف الأمين - بطاقات NFC وشاشات QR الذكية</p>
+    </footer>
+
+    <!-- ملفات الجافا سكريبت الخاصة بتشغيل مكتبة الصور ملء الشاشة -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
 
     <script>
         function downloadVCard() {
